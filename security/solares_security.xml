@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <record id="categoria_modulo_importadora" model="ir.module.category">
+        <field name="name">Importadora</field>
+    </record>
+    <record id="importadora_group_administrador" model="res.groups">
+        <field name="name">Administrador Importadora</field>
+        <field name="category_id" ref="categoria_modulo_importadora"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+</odoo>

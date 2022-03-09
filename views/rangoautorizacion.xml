@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <!--Vista formulario -->
+    <record id="rango_autorizacion_form_view" model="ir.ui.view">
+        <field name="name">rango.autorizacion.form.view</field>
+        <field name="model">sol.rango.autorizacion</field>
+        <field name="arch" type="xml">
+                <form string="Rango Autorizacion">
+                    <sheet>
+                        <group>
+                            <group>
+                                <h1>
+                                    <field name="name" placeholder="Nombre del Rango"/>
+                                </h1>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="monto_inicial_autorizado" placeholder="Descuento minimo"/>
+                                <field name="monto_final_autorizado" placeholder="Descuento maximo"/>
+                            </group>
+                            <group>
+                                <field name="user_id" placeholder="Usuario(s)" widget='many2many_tags' domain="[('share', '=', False)]"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+
+         <!--Vista de arbol-->
+    <record id="rango_autorizacion_tree_view" model="ir.ui.view">
+            <field name="name">rango.autorizacion.tree.view</field>
+            <field name="model">sol.rango.autorizacion</field>
+            <field name="arch" type="xml">
+                    <tree string="Rangos de Autorizacion">
+                        <field name="name"/>
+                        <field name="monto_inicial_autorizado" placeholder="Descuento minimo"/>
+                        <field name="monto_final_autorizado" placeholder="Descuento maximo"/>
+                        <field name="user_id" placeholder="Usuario(s)" widget='many2many_tags' domain="[('share', '=', False)]"/>
+                    </tree>
+            </field>
+    </record>
+</odoo>
