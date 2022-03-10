@@ -9,6 +9,7 @@ class RangoAutorizacion(models.Model):
     user_id = fields.Many2many(string="Usuario(s)", required=True, comodel_name="res.users")
     monto_inicial_autorizado = fields.Float(string="Desde (Q)", default=0)
     monto_final_autorizado = fields.Float(string="Hasta (Q)", default=0)
+    category_id = fields.Many2one(string="Categoria de Productos", required=True, comodel_name="product.category")
     company_id = fields.Many2one(comodel_name='res.company', required=True)
 
     _sql_constraints = [
@@ -19,7 +20,7 @@ class RangoAutorizacion(models.Model):
     def create(self, vals):
         vals['company_id'] = self.env.company.id
         rangos = self.env['sol.rango.autorizacion'].search([('company_id', '=', self.env.company.id),
-                                                            ('monto_final_autorizado', '>=', vals['monto_inicial_autorizado'])],
+                                                            ('category_id', '=', vals['category_id'])],
                                                           order='monto_inicial_autorizado')
         resultado, mensaje = self.valida(vals, rangos)
 
@@ -36,7 +37,7 @@ class RangoAutorizacion(models.Model):
             if not 'monto_final_autorizado' in vals:
                 vals['monto_final_autorizado'] = self.monto_final_autorizado
             rangos = self.env['sol.rango.autorizacion'].search([('company_id', '=', self.env.company.id),
-                                                                ('monto_final_autorizado', '>=', vals['monto_inicial_autorizado']),
+                                                                ('category_id', '=', self.category_id.id),
                                                                 ('id', '!=', self.id)],
                                                               order='monto_inicial_autorizado')
             resultado, mensaje = self.valida(vals, rangos)
@@ -55,7 +56,10 @@ class RangoAutorizacion(models.Model):
         else:
             result = True
             for rango in rangos:
-                if rango.monto_inicial_autorizado <= vals['monto_final_autorizado']:
+                if (((vals['monto_inicial_autorizado'] >= rango.monto_inicial_autorizado) and
+                     (vals['monto_inicial_autorizado'] <= rango.monto_final_autorizado)) or
+                    ((vals['monto_final_autorizado'] >= rango.monto_inicial_autorizado) and
+                     (vals['monto_final_autorizado'] <= rango.monto_final_autorizado))):
                     result = False
                     mensaje = 'Existe un rango que entra en conflicto con este rango, por favor revisar '
         return result, mensaje
