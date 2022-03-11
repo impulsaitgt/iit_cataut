@@ -10,7 +10,7 @@
     'depends': [
     ],
     'data': [
-        'security/solares_security.xml',
+        'security/fel_security.xml',
         'security/ir.model.access.csv',
         'views/menu_view.xml',
         'views/rangoautorizacion.xml'
