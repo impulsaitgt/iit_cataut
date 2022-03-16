@@ -7,12 +7,15 @@
         <field name="model">sale.order.line</field>
         <field name="arch" type="xml">
             <tree string="Autorizaciones">
-                <field name="sol_autorizado" attrs="{'column_invisible': True}"></field>
-                <field name="sol_requiere_autorizacion" attrs="{'column_invisible': True}"></field>
+                <field name="sol_autorizado" attrs="{'column_invisible': True}"/>
+                <field name="sol_requiere_autorizacion" attrs="{'column_invisible': True}"/>
 
                 <field name="order_id"/>
+                <field name="sol_partner_name"/>
                 <field name="product_id"/>
-                <field name="sol_precio_autorizado"/>
+                <field name="sol_precio"/>
+                <field name="sol_precio_solicitado"/>
+                <field name="sol_descuento"/>
 
                 <field name="sol_etiqueta_autorizacion"
                        widget="badge"
@@ -21,12 +24,17 @@
                 </field>
                 <field name="sol_etiqueta_requiere_autorizacion"
                        widget="badge"
-                       decoration-danger="sol_requiere_autorizacion == True"
+                       decoration-info="sol_requiere_autorizacion == True"
                        decoration-success="sol_requiere_autorizacion == False">
                 </field>
-                <field name="sol_supervisores" widget='many2many_tags'></field>
-                <field name="sol_autorizo"></field>
-                <field name="sol_fecha_autorizado"></field>
+                <field name="sol_supervisores" widget='many2many_tags'/>
+                <field name="sol_autorizo"/>
+                <field name="sol_fecha_autorizado"/>
+                <button name="action_autoriza"
+                        type="object"
+                        string="Autoriza"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('sol_autorizado', '=', True)]}"/>
             </tree>
         </field>
     </record>
@@ -39,11 +47,15 @@
         <field name="arch" type="xml">
             <search>
                 <!-- busqueda rapida -->
-                <field name="order_id" string="Pedido"/>
-                <field name="product_id" string="Producto"/>
+                <field name="order_id"
+                       string="Pedido"/>
+                <field name="product_id"
+                       string="Producto"/>
                 <!-- filtro rapido -->
-
-
+                <filter name="pendientes_autorizar"
+                        string="Pendientes de Autorizar"
+                        domain="[('sol_autorizado','=',False),
+                                 ('sol_requiere_autorizacion','=',True)]"/>
             </search>
         </field>
     </record>
