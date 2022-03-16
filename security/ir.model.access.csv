@@ -1,5 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 accesos_rango_autorizacion_administrador,Acceso a rango autorizacion,model_sol_rango_autorizacion,importadora_group_administrador,1,1,1,1
+accesos_autorizacion_pendiente_administrador,Acceso a autorizacion pendiente,model_sol_autorizacion_pendiente_wizard,importadora_group_administrador,1,1,1,1
+accesos_autorizacion_pendiente_line_administrador,Acceso a autorizacion pendiente line,model_sol_autorizacion_pendiente_line_wizard,importadora_group_administrador,1,1,1,1
+
 
 
 
