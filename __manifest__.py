@@ -14,6 +14,8 @@
         'security/solares_security.xml',
         'security/ir.model.access.csv',
         'views/menu_view.xml',
-        'views/rangoautorizacion.xml'
+        'views/rangoautorizacion.xml',
+        'views/sale_order.xml',
+        'wizard/autorizacion_pendiente.xml'
     ]
 }
