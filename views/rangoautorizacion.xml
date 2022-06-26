@@ -19,6 +19,8 @@
                             <group>
                                 <field name="user_id" placeholder="Usuario(s)" widget='many2many_tags' domain="[('share', '=', False)]"/>
                                 <field name="category_id" placeholder="Categoria de Producto" widget='many2one'/>
+                                <field name="sol_tipo_desc" />
+
                             </group>
                             <group>
                                 <field name="monto_inicial_autorizado" placeholder="Descuento minimo"/>
@@ -38,6 +40,7 @@
                     <tree string="Rangos de Autorizacion" default_order="category_id,monto_inicial_autorizado">
                         <field name="name"/>
                         <field name="category_id" placeholder="Categoria de Producto" widget='many2one'/>
+                        <field name="sol_tipo_desc" />
                         <field name="user_id" placeholder="Usuario(s)" widget='many2many_tags'/>
                         <field name="monto_inicial_autorizado" placeholder="Descuento minimo"/>
                         <field name="monto_final_autorizado" placeholder="Descuento maximo"/>

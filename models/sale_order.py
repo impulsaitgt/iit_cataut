@@ -10,7 +10,11 @@ class SaleOrder(models.Model):
         autorizado = True
         for linea in self.order_line:
             if not (linea.sol_autorizado and (linea.sol_precio_solicitado == linea.price_unit)):
-                descuento = linea.product_id.lst_price - linea.price_unit
+                if linea.product_id.categ_id.sol_tipo_desc == 'Monto':
+                    descuento = linea.product_id.lst_price - linea.price_reduce
+                else:
+                    descuento = (linea.product_id.lst_price - linea.price_reduce) / linea.product_id.lst_price * 100
+
                 if descuento > 0:
                     rango = self.env['sol.rango.autorizacion'].search([('company_id', '=', self.env.company.id),
                                                                        ('category_id', '=', linea.product_id.categ_id.id),
@@ -23,8 +27,8 @@ class SaleOrder(models.Model):
                             'sol_autorizado': False,
                             'sol_requiere_autorizacion': True,
                             'sol_precio': linea.product_id.lst_price,
-                            'sol_precio_solicitado': linea.price_unit,
-                            'sol_descuento': descuento,
+                            'sol_precio_solicitado': linea.price_reduce,
+                            'sol_descuento': linea.product_id.lst_price - linea.price_reduce,
                             'sol_fecha_autorizado': None
                         }
                         linea_act = self.env['sale.order.line'].search([('id', '=', linea.id)])
