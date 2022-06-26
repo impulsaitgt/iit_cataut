@@ -7,9 +7,10 @@ class RangoAutorizacion(models.Model):
 
     name = fields.Char(string="Rango",required=True)
     user_id = fields.Many2many(string="Usuario(s)", required=True, comodel_name="res.users")
-    monto_inicial_autorizado = fields.Float(string="Desde (Q)", default=0)
-    monto_final_autorizado = fields.Float(string="Hasta (Q)", default=0)
+    monto_inicial_autorizado = fields.Float(string="Desde", default=0)
+    monto_final_autorizado = fields.Float(string="Hasta", default=0)
     category_id = fields.Many2one(string="Categoria de Productos", required=True, comodel_name="product.category")
+    sol_tipo_desc = fields.Selection(string="Monto/Porcentaje", related="category_id.sol_tipo_desc")
     company_id = fields.Many2one(comodel_name='res.company', required=True)
 
     _sql_constraints = [

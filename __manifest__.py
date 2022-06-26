@@ -15,6 +15,7 @@
         'security/ir.model.access.csv',
         'views/menu_view.xml',
         'views/rangoautorizacion.xml',
+        'views/product_category.xml',
         'views/sale_order.xml',
         'wizard/autorizacion_pendiente.xml'
     ]
