@@ -16,6 +16,8 @@
         'views/menu_view.xml',
         'views/rangoautorizacion.xml',
         'views/product_category.xml',
+        'views/marca.xml',
+        'views/product_template.xml',
         'views/sale_order.xml',
         'wizard/autorizacion_pendiente.xml'
     ]

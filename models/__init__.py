@@ -1,1 +1,1 @@
-from . import rangoautorizacion, sale_order, product_category
+from . import rangoautorizacion, sale_order, product_category, marca, product_template

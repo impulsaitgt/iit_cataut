@@ -14,8 +14,23 @@
         <field name="view_mode">tree,form,kanban</field>
     </record>
 
+    <record id="marca_action" model="ir.actions.act_window">
+        <field name="name">Marcas</field>
+        <field name="res_model">sol.marca</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
 
     <menuitem name="Importadora" id="importadora_menu"/>
+
+    <menuitem name="Maestros" id="maestros_menu" parent="importadora_menu"/>
+    <menuitem name="Marcas" id="marca_opcion" parent="maestros_menu" action="marca_action"/>
+    <menuitem name="Clientes" id="clientes_opcion" parent="maestros_menu" action="account.res_partner_action_customer"/>
+    <menuitem name="Productos" id="productos_opcion" parent="maestros_menu" action="account.product_product_action_sellable"/>
+    <menuitem name="Facturas y Cargos" id="facturas_cargos_opcion" parent="maestros_menu" action="account.action_move_out_invoice_type"/>
+    <menuitem name="Pagos" id="pagos_opcion" parent="maestros_menu" action="account.action_account_payments"/>
+
+
     <menuitem name="Procesos" id="procesos_menu" parent="importadora_menu"/>
     <menuitem name="Rangos de Autorizacion" id="rango_autorizacion_opcion" parent="procesos_menu" action="rango_autorizacion_action"/>
     <menuitem name="Autorizaciones" id="autorizaciones_opcion" parent="procesos_menu" action="autorizaciones_action"/>

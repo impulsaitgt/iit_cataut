@@ -17,7 +17,7 @@ class SaleOrder(models.Model):
 
                 if descuento > 0:
                     rango = self.env['sol.rango.autorizacion'].search([('company_id', '=', self.env.company.id),
-                                                                       ('category_id', '=', linea.product_id.categ_id.id),
+                                                                       ('category_id', '=', linea.product_id.categ_id.parent_id.id),
                                                                        ('monto_inicial_autorizado', '<=', descuento),
                                                                        ('monto_final_autorizado', '>=', descuento)],
                                                                        order='monto_inicial_autorizado')

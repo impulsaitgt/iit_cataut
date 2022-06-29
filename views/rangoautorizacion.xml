@@ -18,7 +18,7 @@
                         <group>
                             <group>
                                 <field name="user_id" placeholder="Usuario(s)" widget='many2many_tags' domain="[('share', '=', False)]"/>
-                                <field name="category_id" placeholder="Categoria de Producto" widget='many2one'/>
+                                <field name="category_id" placeholder="Categoria de Producto" domain="[('parent_id', '=', False)]"  widget='many2one'/>
                                 <field name="sol_tipo_desc" />
 
                             </group>
