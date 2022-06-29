@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <record id="product_template_product_form_ihnerit" model="ir.ui.view">
+        <field name="name">product.template.inherited</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="marca_id"/>
+                <field name="sol_ref"/>
+                <field name="sol_serie"/>
+                <field name="sol_nota"/>
+                <field name="sol_observacion"/>
+            </field>
+        </field>
+    </record>
+</odoo>
