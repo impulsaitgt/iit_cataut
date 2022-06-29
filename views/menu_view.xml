@@ -27,6 +27,7 @@
     <menuitem name="Marcas" id="marca_opcion" parent="maestros_menu" action="marca_action"/>
     <menuitem name="Clientes" id="clientes_opcion" parent="maestros_menu" action="account.res_partner_action_customer"/>
     <menuitem name="Productos" id="productos_opcion" parent="maestros_menu" action="account.product_product_action_sellable"/>
+    <menuitem name="Categorias de Productos" id="categorias_productos_opcion" parent="maestros_menu" action="product.product_category_action_form"/>
     <menuitem name="Facturas y Cargos" id="facturas_cargos_opcion" parent="maestros_menu" action="account.action_move_out_invoice_type"/>
     <menuitem name="Pagos" id="pagos_opcion" parent="maestros_menu" action="account.action_account_payments"/>
 
