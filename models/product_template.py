@@ -6,7 +6,7 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     sol_ref = fields.Integer(string="Correlativo Interno", required=True, default=0)
-    marca_id = fields.Many2one(comodel_name='sol.marca', string="Marca", required=True)
+    marca_id = fields.Many2one(comodel_name='sol.marca', string="Marca", required=False)
     sol_serie = fields.Char(string="Serie")
     sol_nota = fields.Char(string="Nota")
     sol_observacion = fields.Char(string="Observacion")
