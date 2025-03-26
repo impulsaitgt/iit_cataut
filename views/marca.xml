@@ -4,20 +4,16 @@
     <!--Vista formulario -->
     <record id="marca_form_view" model="ir.ui.view">
         <field name="name">marca.form.view</field>
-        <field name="model">sol.marca</field>
+        <field name="model">caa.marca</field>
         <field name="arch" type="xml">
                 <form string="Marca">
                     <sheet>
                         <group>
-                            <group>
-                                <h1>
-                                    <field name="name" placeholder="Nombre completo"/>
-                                </h1>
-                            </group>
+                            <field name="name" placeholder="Nombre completo"/>
                         </group>
                         <group>
                             <group>
-                                <field name="sol_corr" placeholder="Prefijo para Correlativo"/>
+                                <field name="caa_corr" placeholder="Prefijo para Correlativo"/>
                             </group>
                         </group>
                     </sheet>
@@ -27,11 +23,11 @@
          <!--Vista de arbol-->
     <record id="marca_tree_view" model="ir.ui.view">
             <field name="name">marca.tree.view</field>
-            <field name="model">sol.marca</field>
+            <field name="model">caa.marca</field>
             <field name="arch" type="xml">
                     <tree string="Marcas">
                         <field name="name"/>
-                        <field name="sol_corr"/>
+                        <field name="caa_corr"/>
                     </tree>
             </field>
     </record>

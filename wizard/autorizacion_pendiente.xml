@@ -4,7 +4,7 @@
     <!--Vista formulario -->
     <record id="autorizacion_pendiente_form_view" model="ir.ui.view">
         <field name="name">autorizacion.pendiente.form.view</field>
-        <field name="model">sol.autorizacion.pendiente.wizard</field>
+        <field name="model">caa.autorizacion.pendiente.wizard</field>
         <field name="arch" type="xml">
             <form string="Autorizaciones Pendientes">
                 <group>
@@ -16,15 +16,8 @@
                     </group>
                 </group>
                 <notebook>
-                    <page string="Productos pendientes de Autorizacion" name="autorizaciones">
-                        <field name="autorizacion_lines" widget="section_and_note_many2many"
-                               mode="tree"
-                               readonly="1">
-                            <tree string="Autorizaciones pendientes">
-                                <field name="producto_id"/>
-                                <field name="user_id" widget='many2many_tags'/>
-                            </tree>
-                        </field>
+                    <page string="Productos pendientes de Autorización" name="autorizaciones">
+                        <field name="detalle_autorizaciones" widget="html" readonly="1"/>
                     </page>
                 </notebook>
                 <footer>
@@ -39,7 +32,7 @@
     <record id="action_autorizacion_pendiente" model="ir.actions.act_window">
         <field name="name">Autorizacion Pendiente</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">sol.autorizacion.pendiente.wizard</field>
+        <field name="res_model">caa.autorizacion.pendiente.wizard</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="autorizacion_pendiente_form_view"/>
         <field name="target">new</field>
