@@ -2,7 +2,7 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 class RangoAutorizacion(models.Model):
-    _name = 'sol.rango.autorizacion'
+    _name = 'caa.rango.autorizacion'
     _description = 'Rangos para autorizacion de precios especiales'
 
     name = fields.Char(string="Rango",required=True)
@@ -10,7 +10,7 @@ class RangoAutorizacion(models.Model):
     monto_inicial_autorizado = fields.Float(string="Desde", default=0)
     monto_final_autorizado = fields.Float(string="Hasta", default=0)
     category_id = fields.Many2one(string="Categoria de Productos", required=True, comodel_name="product.category")
-    sol_tipo_desc = fields.Selection(string="Monto/Porcentaje", related="category_id.sol_tipo_desc")
+    caa_tipo_desc = fields.Selection(string="Monto/Porcentaje", related="category_id.caa_tipo_desc")
     company_id = fields.Many2one(comodel_name='res.company', required=True)
 
     _sql_constraints = [
@@ -20,7 +20,7 @@ class RangoAutorizacion(models.Model):
     @api.model
     def create(self, vals):
         vals['company_id'] = self.env.company.id
-        rangos = self.env['sol.rango.autorizacion'].search([('company_id', '=', self.env.company.id),
+        rangos = self.env['caa.rango.autorizacion'].search([('company_id', '=', self.env.company.id),
                                                             ('category_id', '=', vals['category_id'])],
                                                           order='monto_inicial_autorizado')
         resultado, mensaje = self.valida(vals, rangos)

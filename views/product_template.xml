@@ -8,10 +8,10 @@
         <field name="arch" type="xml">
             <field name="categ_id" position="after">
                 <field name="marca_id"/>
-                <field name="sol_ref"/>
-                <field name="sol_serie"/>
-                <field name="sol_nota"/>
-                <field name="sol_observacion"/>
+                <field name="caa_ref"/>
+                <field name="caa_serie"/>
+                <field name="caa_nota"/>
+                <field name="caa_observacion"/>
             </field>
         </field>
     </record>

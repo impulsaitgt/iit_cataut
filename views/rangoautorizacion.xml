@@ -4,22 +4,18 @@
     <!--Vista formulario -->
     <record id="rango_autorizacion_form_view" model="ir.ui.view">
         <field name="name">rango.autorizacion.form.view</field>
-        <field name="model">sol.rango.autorizacion</field>
+        <field name="model">caa.rango.autorizacion</field>
         <field name="arch" type="xml">
                 <form string="Rango Autorizacion">
                     <sheet>
                         <group>
-                            <group>
-                                <h1>
-                                    <field name="name" placeholder="Nombre del Rango"/>
-                                </h1>
-                            </group>
+                            <field name="name" placeholder="Nombre del Rango"/>
                         </group>
                         <group>
                             <group>
                                 <field name="user_id" placeholder="Usuario(s)" widget='many2many_tags' domain="[('share', '=', False)]"/>
                                 <field name="category_id" placeholder="Categoria de Producto" domain="[('parent_id', '=', False)]"  widget='many2one'/>
-                                <field name="sol_tipo_desc" />
+                                <field name="caa_tipo_desc" />
 
                             </group>
                             <group>
@@ -35,12 +31,12 @@
          <!--Vista de arbol-->
     <record id="rango_autorizacion_tree_view" model="ir.ui.view">
             <field name="name">rango.autorizacion.tree.view</field>
-            <field name="model">sol.rango.autorizacion</field>
+            <field name="model">caa.rango.autorizacion</field>
             <field name="arch" type="xml">
                     <tree string="Rangos de Autorizacion" default_order="category_id,monto_inicial_autorizado">
                         <field name="name"/>
                         <field name="category_id" placeholder="Categoria de Producto" widget='many2one'/>
-                        <field name="sol_tipo_desc" />
+                        <field name="caa_tipo_desc" />
                         <field name="user_id" placeholder="Usuario(s)" widget='many2many_tags'/>
                         <field name="monto_inicial_autorizado" placeholder="Descuento minimo"/>
                         <field name="monto_final_autorizado" placeholder="Descuento maximo"/>

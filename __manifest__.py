@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name' : 'Importadora Solares',
+    'name' : 'Marcas, Categorias y Autorizaciones',
     'summary':"""
-        Implementacion Importadora Solares
+        Marcas, Categorias y Autorizaciones
     """,
     'author':'Alexander Paiz/Lester Paiz',
     'category': 'General',

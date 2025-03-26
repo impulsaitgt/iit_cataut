@@ -2,60 +2,76 @@
 
 <odoo>
 
+<!--     <record id="sales_view_order_form_ihnerit" model="ir.ui.view">
+        <field name="name">sale.order.view.inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <group name="order_details" position="before">
+                <group string="Autorizaciones">
+                    <field name="caa_etiqueta_requiere_autorizacion"
+                           widget="badge"
+                           decoration-info="caa_requiere_autorizacion == True"
+                           decoration-success="caa_requiere_autorizacion == False">
+                    </field>
+                </group>
+            </group>
+        </field>
+    </record> -->
+
     <record id="sale_order_aut_tree_view" model="ir.ui.view">
         <field name="name">sale.order.auth.tree.view</field>
         <field name="model">sale.order.line</field>
         <field name="arch" type="xml">
-            <tree string="Autorizaciones">
-                <field name="sol_autorizado" attrs="{'column_invisible': True}"/>
-                <field name="sol_requiere_autorizacion" attrs="{'column_invisible': True}"/>
+            <tree string="Autorizaciones" create="false">
+                <field name="caa_autorizado" column_invisible= "True"/>
+                <field name="caa_requiere_autorizacion" column_invisible="True" />
 
                 <field name="order_id"/>
-                <field name="sol_partner_name"/>
+                <field name="caa_partner_name"/>
                 <field name="product_id"/>
-                <field name="sol_precio"/>
-                <field name="sol_precio_solicitado"/>
-                <field name="sol_descuento"/>
+                <field name="caa_precio"/>
+                <field name="caa_precio_solicitado"/>
+                <field name="caa_descuento"/>
 
-                <field name="sol_etiqueta_autorizacion"
+                <field name="caa_etiqueta_autorizacion"
                        widget="badge"
-                       decoration-danger="sol_autorizado == False"
-                       decoration-success="sol_autorizado == True">
+                       decoration-danger="caa_autorizado == False"
+                       decoration-success="caa_autorizado == True">
                 </field>
-                <field name="sol_etiqueta_requiere_autorizacion"
+                <field name="caa_etiqueta_requiere_autorizacion"
                        widget="badge"
-                       decoration-info="sol_requiere_autorizacion == True"
-                       decoration-success="sol_requiere_autorizacion == False">
+                       decoration-info="caa_requiere_autorizacion == True"
+                       decoration-success="caa_requiere_autorizacion == False">
                 </field>
-                <field name="sol_supervisores" widget='many2many_tags'/>
-                <field name="sol_autorizo"/>
-                <field name="sol_fecha_autorizado"/>
+                <field name="caa_supervisores" widget="many2many_tags"/>
+                <field name="caa_autorizo"/>
+                <field name="caa_fecha_autorizado"/>
                 <button name="action_autoriza"
                         type="object"
                         string="Autoriza"
                         class="oe_highlight"
-                        attrs="{'invisible': [('sol_autorizado', '=', True)]}"/>
+                        invisible="caa_autorizado == True"/>  
             </tree>
         </field>
     </record>
 
-
-            <!-- vista busqueda -->
+    <!-- vista búsqueda -->
     <record id="sale_order_aut_tree_search_view" model="ir.ui.view">
         <field name="name">sale.order.auth.tree.search.view</field>
         <field name="model">sale.order.line</field>
         <field name="arch" type="xml">
             <search>
-                <!-- busqueda rapida -->
+                <!-- búsqueda rápida -->
                 <field name="order_id"
                        string="Pedido"/>
                 <field name="product_id"
                        string="Producto"/>
-                <!-- filtro rapido -->
+                <!-- filtro rápido -->
                 <filter name="pendientes_autorizar"
                         string="Pendientes de Autorizar"
-                        domain="[('sol_autorizado','=',False),
-                                 ('sol_requiere_autorizacion','=',True)]"/>
+                        domain="[('caa_autorizado','=',False),
+                                 ('caa_requiere_autorizacion','=',True)]"/>
             </search>
         </field>
     </record>
