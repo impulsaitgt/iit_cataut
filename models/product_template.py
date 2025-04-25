@@ -25,7 +25,7 @@ class ProductTemplate(models.Model):
         if self.marca_id.caa_corr and self.categ_id.caa_corr:
             siguiente = self.env['product.template'].search([('marca_id', '=', self.marca_id.id),
                                                              ('categ_id', '=', self.categ_id.id)],
-                                                                 order='sol_ref desc')
+                                                                 order='caa_ref desc')
 
             sig_corr = 1
             if siguiente:
