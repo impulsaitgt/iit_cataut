@@ -18,6 +18,7 @@
         'views/product_category.xml',
         'views/marca.xml',
         'views/product_template.xml',
+        'views/product_template_tree_view.xml',
         'views/sale_order.xml',
         'wizard/autorizacion_pendiente.xml'
     ]
