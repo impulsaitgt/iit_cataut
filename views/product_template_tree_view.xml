@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <data>
+        <record id="product_product_template_tree_view_inherited" model="ir.ui.view">
+            <field name="name">product.product_template_tree_view_inherited</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="default_code" position="after">
+                    <field name="caa_observacion" string="Observacion" optional="hide"/>
+                </field>        
+            </field>        
+        </record>
+
+        <record id="product_product_product_tree_view_inherited" model="ir.ui.view">
+            <field name="name">product.product_product_tree_view_inherited</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="default_code" position="after">
+                    <field name="caa_observacion" string="Observacion" optional="hide"/>
+                </field>        
+            </field>        
+        </record>
+     
+
+    </data>
+</odoo>
