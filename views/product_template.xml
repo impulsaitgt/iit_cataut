@@ -12,6 +12,7 @@
                 <field name="caa_serie"/>
                 <field name="caa_nota"/>
                 <field name="caa_observacion"/>
+                <field name="caa_intercambio"/>
             </field>
         </field>
     </record>

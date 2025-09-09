@@ -10,8 +10,7 @@ class ProductTemplate(models.Model):
     caa_serie = fields.Char(string="Serie")
     caa_nota = fields.Char(string="Nota")
     caa_observacion = fields.Char(string="Observacion")
-
-
+    caa_intercambio = fields.Char(string="Intercambio")
 
     @api.onchange('marca_id')
     def onchange_marca_id(self):

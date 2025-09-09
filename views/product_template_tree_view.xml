@@ -9,6 +9,7 @@
             <field name="arch" type="xml">
                 <field name="default_code" position="after">
                     <field name="caa_observacion" string="Observacion" optional="hide"/>
+                    <field name="caa_intercambio" string="Intercamibo" optional="hide"/>
                 </field>        
             </field>        
         </record>
@@ -20,6 +21,7 @@
             <field name="arch" type="xml">
                 <field name="default_code" position="after">
                     <field name="caa_observacion" string="Observacion" optional="hide"/>
+                    <field name="caa_intercambio" string="Intercamibo" optional="hide"/>
                 </field>        
             </field>        
         </record>
